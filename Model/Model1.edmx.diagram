@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cca13cfcec2540e886d6b399e9011c5f" Name="Diagram1">
+        <EntityTypeShape EntityType="HashavatAvedaModel.Category" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HashavatAvedaModel.Color" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HashavatAvedaModel.Found" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HashavatAvedaModel.Item" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HashavatAvedaModel.Lost" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HashavatAvedaModel.Material" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HashavatAvedaModel.User" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Founds__Category__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Items__CategoryI__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Losts__CategoryI__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Founds__color1__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Founds__color2__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Founds__color3__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Losts__color1__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Losts__color2__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Losts__color3__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Founds__ItemId__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Founds__Material__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Founds__UserId__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Losts__ItemId__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Losts__MaterialI__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.FK__Losts__UserId__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.ColorsFounds" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.ColorsLosts" ManuallyRouted="false" />
+        <AssociationConnector Association="HashavatAvedaModel.LostToFound" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

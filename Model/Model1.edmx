@@ -1,0 +1,1039 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HashavatAvedaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Colors">
+          <Key>
+            <PropertyRef Name="ColorId" />
+          </Key>
+          <Property Name="ColorId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ColorName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HashavatAveda.dbo.ColorsFounds' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ColorsFounds">
+          <Key>
+            <PropertyRef Name="FoundId" />
+            <PropertyRef Name="ColorId" />
+          </Key>
+          <Property Name="FoundId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ColorId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HashavatAveda.dbo.ColorsLosts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ColorsLosts">
+          <Key>
+            <PropertyRef Name="LostId" />
+            <PropertyRef Name="ColorId" />
+          </Key>
+          <Property Name="LostId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ColorId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Founds">
+          <Key>
+            <PropertyRef Name="FoundId" />
+          </Key>
+          <Property Name="FoundId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoundName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ItemId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaterialId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="FoundDescription" Type="nvarchar" MaxLength="150" />
+          <Property Name="FoundDate" Type="date" Nullable="false" />
+          <Property Name="FoundLat" Type="float" />
+          <Property Name="FoundLng" Type="float" />
+          <Property Name="FoundImage" Type="nvarchar" MaxLength="150" />
+          <Property Name="UserId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="color1" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="color2" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="color3" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="FoundAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="FoundStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Losts">
+          <Key>
+            <PropertyRef Name="LostId" />
+          </Key>
+          <Property Name="LostId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ItemId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaterialId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="LostDescription" Type="nvarchar" MaxLength="150" />
+          <Property Name="LostDate" Type="date" Nullable="false" />
+          <Property Name="LostLat" Type="float" Nullable="false" />
+          <Property Name="LostLng" Type="float" Nullable="false" />
+          <Property Name="SearchRadius" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LostImage" Type="nvarchar" MaxLength="150" />
+          <Property Name="UserId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="color1" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="color2" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="color3" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="LostAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="LostStatus" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HashavatAveda.dbo.LostToFound' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LostToFound">
+          <Key>
+            <PropertyRef Name="LostId" />
+            <PropertyRef Name="FoundId" />
+          </Key>
+          <Property Name="LostId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FoundId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Materials">
+          <Key>
+            <PropertyRef Name="MaterialId" />
+          </Key>
+          <Property Name="MaterialId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaterialName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserMail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserMobile" Type="nvarchar" MaxLength="10" />
+          <Property Name="UserStatus" Type="bit" Nullable="false" />
+          <Property Name="UserImage" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserLat" Type="float" />
+          <Property Name="UserLng" Type="float" />
+          <Property Name="UserAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__ColorsFou__Color__45F365D3">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="1" />
+          <End Role="ColorsFounds" Type="Self.ColorsFounds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="ColorsFounds">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ColorsFou__Found__46E78A0C">
+          <End Role="Founds" Type="Self.Founds" Multiplicity="1" />
+          <End Role="ColorsFounds" Type="Self.ColorsFounds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Founds">
+              <PropertyRef Name="FoundId" />
+            </Principal>
+            <Dependent Role="ColorsFounds">
+              <PropertyRef Name="FoundId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ColorsLos__Color__47DBAE45">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="1" />
+          <End Role="ColorsLosts" Type="Self.ColorsLosts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="ColorsLosts">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ColorsLos__LostI__48CFD27E">
+          <End Role="Losts" Type="Self.Losts" Multiplicity="1" />
+          <End Role="ColorsLosts" Type="Self.ColorsLosts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Losts">
+              <PropertyRef Name="LostId" />
+            </Principal>
+            <Dependent Role="ColorsLosts">
+              <PropertyRef Name="LostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Founds__Category__49C3F6B7">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Founds" Type="Self.Founds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Founds">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Founds__color1__5FB337D6">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="0..1" />
+          <End Role="Founds" Type="Self.Founds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Founds">
+              <PropertyRef Name="color1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Founds__color2__5EBF139D">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="0..1" />
+          <End Role="Founds" Type="Self.Founds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Founds">
+              <PropertyRef Name="color2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Founds__color3__5DCAEF64">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="0..1" />
+          <End Role="Founds" Type="Self.Founds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Founds">
+              <PropertyRef Name="color3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Founds__ItemId__4AB81AF0">
+          <End Role="Items" Type="Self.Items" Multiplicity="1" />
+          <End Role="Founds" Type="Self.Founds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="Founds">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Founds__Material__4BAC3F29">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="0..1" />
+          <End Role="Founds" Type="Self.Founds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MaterialId" />
+            </Principal>
+            <Dependent Role="Founds">
+              <PropertyRef Name="MaterialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Founds__UserId__4CA06362">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Founds" Type="Self.Founds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Founds">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Items__CategoryI__4D94879B">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Losts__CategoryI__4E88ABD4">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Losts" Type="Self.Losts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Losts">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Losts__color1__5AEE82B9">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="0..1" />
+          <End Role="Losts" Type="Self.Losts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Losts">
+              <PropertyRef Name="color1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Losts__color2__5BE2A6F2">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="0..1" />
+          <End Role="Losts" Type="Self.Losts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Losts">
+              <PropertyRef Name="color2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Losts__color3__5CD6CB2B">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="0..1" />
+          <End Role="Losts" Type="Self.Losts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Losts">
+              <PropertyRef Name="color3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Losts__ItemId__4F7CD00D">
+          <End Role="Items" Type="Self.Items" Multiplicity="1" />
+          <End Role="Losts" Type="Self.Losts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="Losts">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Losts__MaterialI__5070F446">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="0..1" />
+          <End Role="Losts" Type="Self.Losts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MaterialId" />
+            </Principal>
+            <Dependent Role="Losts">
+              <PropertyRef Name="MaterialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Losts__UserId__5165187F">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Losts" Type="Self.Losts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Losts">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LostToFou__Found__52593CB8">
+          <End Role="Founds" Type="Self.Founds" Multiplicity="1" />
+          <End Role="LostToFound" Type="Self.LostToFound" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Founds">
+              <PropertyRef Name="FoundId" />
+            </Principal>
+            <Dependent Role="LostToFound">
+              <PropertyRef Name="FoundId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LostToFou__LostI__534D60F1">
+          <End Role="Losts" Type="Self.Losts" Multiplicity="1" />
+          <End Role="LostToFound" Type="Self.LostToFound" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Losts">
+              <PropertyRef Name="LostId" />
+            </Principal>
+            <Dependent Role="LostToFound">
+              <PropertyRef Name="LostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HashavatAvedaModelStoreContainer">
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Founds" EntityType="Self.Founds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Losts" EntityType="Self.Losts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ColorsFounds" EntityType="Self.ColorsFounds" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ColorsFounds].[FoundId] AS [FoundId], 
+    [ColorsFounds].[ColorId] AS [ColorId]
+    FROM [dbo].[ColorsFounds] AS [ColorsFounds]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ColorsLosts" EntityType="Self.ColorsLosts" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ColorsLosts].[LostId] AS [LostId], 
+    [ColorsLosts].[ColorId] AS [ColorId]
+    FROM [dbo].[ColorsLosts] AS [ColorsLosts]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LostToFound" EntityType="Self.LostToFound" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LostToFound].[LostId] AS [LostId], 
+    [LostToFound].[FoundId] AS [FoundId]
+    FROM [dbo].[LostToFound] AS [LostToFound]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__ColorsFou__Color__45F365D3" Association="Self.FK__ColorsFou__Color__45F365D3">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="ColorsFounds" EntitySet="ColorsFounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ColorsFou__Found__46E78A0C" Association="Self.FK__ColorsFou__Found__46E78A0C">
+            <End Role="Founds" EntitySet="Founds" />
+            <End Role="ColorsFounds" EntitySet="ColorsFounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ColorsLos__Color__47DBAE45" Association="Self.FK__ColorsLos__Color__47DBAE45">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="ColorsLosts" EntitySet="ColorsLosts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ColorsLos__LostI__48CFD27E" Association="Self.FK__ColorsLos__LostI__48CFD27E">
+            <End Role="Losts" EntitySet="Losts" />
+            <End Role="ColorsLosts" EntitySet="ColorsLosts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Founds__Category__49C3F6B7" Association="Self.FK__Founds__Category__49C3F6B7">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Founds__color1__5FB337D6" Association="Self.FK__Founds__color1__5FB337D6">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Founds__color2__5EBF139D" Association="Self.FK__Founds__color2__5EBF139D">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Founds__color3__5DCAEF64" Association="Self.FK__Founds__color3__5DCAEF64">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Founds__ItemId__4AB81AF0" Association="Self.FK__Founds__ItemId__4AB81AF0">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Founds__Material__4BAC3F29" Association="Self.FK__Founds__Material__4BAC3F29">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Founds__UserId__4CA06362" Association="Self.FK__Founds__UserId__4CA06362">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Items__CategoryI__4D94879B" Association="Self.FK__Items__CategoryI__4D94879B">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Losts__CategoryI__4E88ABD4" Association="Self.FK__Losts__CategoryI__4E88ABD4">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Losts__color1__5AEE82B9" Association="Self.FK__Losts__color1__5AEE82B9">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Losts__color2__5BE2A6F2" Association="Self.FK__Losts__color2__5BE2A6F2">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Losts__color3__5CD6CB2B" Association="Self.FK__Losts__color3__5CD6CB2B">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Losts__ItemId__4F7CD00D" Association="Self.FK__Losts__ItemId__4F7CD00D">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Losts__MaterialI__5070F446" Association="Self.FK__Losts__MaterialI__5070F446">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Losts__UserId__5165187F" Association="Self.FK__Losts__UserId__5165187F">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LostToFou__Found__52593CB8" Association="Self.FK__LostToFou__Found__52593CB8">
+            <End Role="Founds" EntitySet="Founds" />
+            <End Role="LostToFound" EntitySet="LostToFound" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LostToFou__LostI__534D60F1" Association="Self.FK__LostToFou__LostI__534D60F1">
+            <End Role="Losts" EntitySet="Losts" />
+            <End Role="LostToFound" EntitySet="LostToFound" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HashavatAvedaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Founds" Relationship="Self.FK__Founds__Category__49C3F6B7" FromRole="Categories" ToRole="Founds" />
+          <NavigationProperty Name="Items" Relationship="Self.FK__Items__CategoryI__4D94879B" FromRole="Categories" ToRole="Items" />
+          <NavigationProperty Name="Losts" Relationship="Self.FK__Losts__CategoryI__4E88ABD4" FromRole="Categories" ToRole="Losts" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ColorId" />
+          </Key>
+          <Property Name="ColorId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ColorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Founds" Relationship="Self.FK__Founds__color1__5FB337D6" FromRole="Colors" ToRole="Founds" />
+          <NavigationProperty Name="Founds1" Relationship="Self.FK__Founds__color2__5EBF139D" FromRole="Colors" ToRole="Founds" />
+          <NavigationProperty Name="Founds2" Relationship="Self.FK__Founds__color3__5DCAEF64" FromRole="Colors" ToRole="Founds" />
+          <NavigationProperty Name="Losts" Relationship="Self.FK__Losts__color1__5AEE82B9" FromRole="Colors" ToRole="Losts" />
+          <NavigationProperty Name="Losts1" Relationship="Self.FK__Losts__color2__5BE2A6F2" FromRole="Colors" ToRole="Losts" />
+          <NavigationProperty Name="Losts2" Relationship="Self.FK__Losts__color3__5CD6CB2B" FromRole="Colors" ToRole="Losts" />
+          <NavigationProperty Name="Founds3" Relationship="Self.ColorsFounds" FromRole="Colors" ToRole="Founds" />
+          <NavigationProperty Name="Losts3" Relationship="Self.ColorsLosts" FromRole="Colors" ToRole="Losts" />
+        </EntityType>
+        <EntityType Name="Found">
+          <Key>
+            <PropertyRef Name="FoundId" />
+          </Key>
+          <Property Name="FoundId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoundName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ItemId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaterialId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="FoundDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FoundDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FoundLat" Type="Double" />
+          <Property Name="FoundLng" Type="Double" />
+          <Property Name="FoundImage" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="color1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="color2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="color3" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="FoundAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FoundStatus" Type="Boolean" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Founds__Category__49C3F6B7" FromRole="Founds" ToRole="Categories" />
+          <NavigationProperty Name="Color" Relationship="Self.FK__Founds__color1__5FB337D6" FromRole="Founds" ToRole="Colors" />
+          <NavigationProperty Name="Color4" Relationship="Self.FK__Founds__color2__5EBF139D" FromRole="Founds" ToRole="Colors" />
+          <NavigationProperty Name="Color5" Relationship="Self.FK__Founds__color3__5DCAEF64" FromRole="Founds" ToRole="Colors" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Founds__ItemId__4AB81AF0" FromRole="Founds" ToRole="Items" />
+          <NavigationProperty Name="Material" Relationship="Self.FK__Founds__Material__4BAC3F29" FromRole="Founds" ToRole="Materials" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Founds__UserId__4CA06362" FromRole="Founds" ToRole="Users" />
+          <NavigationProperty Name="Colors" Relationship="Self.ColorsFounds" FromRole="Founds" ToRole="Colors" />
+          <NavigationProperty Name="Losts" Relationship="Self.LostToFound" FromRole="Founds" ToRole="Losts" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Items__CategoryI__4D94879B" FromRole="Items" ToRole="Categories" />
+          <NavigationProperty Name="Founds" Relationship="Self.FK__Founds__ItemId__4AB81AF0" FromRole="Items" ToRole="Founds" />
+          <NavigationProperty Name="Losts" Relationship="Self.FK__Losts__ItemId__4F7CD00D" FromRole="Items" ToRole="Losts" />
+        </EntityType>
+        <EntityType Name="Lost">
+          <Key>
+            <PropertyRef Name="LostId" />
+          </Key>
+          <Property Name="LostId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ItemId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaterialId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="LostDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LostDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LostLat" Type="Double" Nullable="false" />
+          <Property Name="LostLng" Type="Double" Nullable="false" />
+          <Property Name="SearchRadius" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="LostImage" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="color1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="color2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="color3" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="LostAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LostStatus" Type="Boolean" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Losts__CategoryI__4E88ABD4" FromRole="Losts" ToRole="Categories" />
+          <NavigationProperty Name="Color" Relationship="Self.FK__Losts__color1__5AEE82B9" FromRole="Losts" ToRole="Colors" />
+          <NavigationProperty Name="Color4" Relationship="Self.FK__Losts__color2__5BE2A6F2" FromRole="Losts" ToRole="Colors" />
+          <NavigationProperty Name="Color5" Relationship="Self.FK__Losts__color3__5CD6CB2B" FromRole="Losts" ToRole="Colors" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Losts__ItemId__4F7CD00D" FromRole="Losts" ToRole="Items" />
+          <NavigationProperty Name="Material" Relationship="Self.FK__Losts__MaterialI__5070F446" FromRole="Losts" ToRole="Materials" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Losts__UserId__5165187F" FromRole="Losts" ToRole="Users" />
+          <NavigationProperty Name="Colors" Relationship="Self.ColorsLosts" FromRole="Losts" ToRole="Colors" />
+          <NavigationProperty Name="Founds" Relationship="Self.LostToFound" FromRole="Losts" ToRole="Founds" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="MaterialId" />
+          </Key>
+          <Property Name="MaterialId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaterialName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Founds" Relationship="Self.FK__Founds__Material__4BAC3F29" FromRole="Materials" ToRole="Founds" />
+          <NavigationProperty Name="Losts" Relationship="Self.FK__Losts__MaterialI__5070F446" FromRole="Materials" ToRole="Losts" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserMobile" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UserStatus" Type="Boolean" Nullable="false" />
+          <Property Name="UserImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserLat" Type="Double" />
+          <Property Name="UserLng" Type="Double" />
+          <Property Name="UserAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Founds" Relationship="Self.FK__Founds__UserId__4CA06362" FromRole="Users" ToRole="Founds" />
+          <NavigationProperty Name="Losts" Relationship="Self.FK__Losts__UserId__5165187F" FromRole="Users" ToRole="Losts" />
+        </EntityType>
+        <Association Name="FK__Founds__Category__49C3F6B7">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Founds" Type="Self.Found" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Founds">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Items__CategoryI__4D94879B">
+          <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Items" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Losts__CategoryI__4E88ABD4">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Losts" Type="Self.Lost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Losts">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Founds__color1__5FB337D6">
+          <End Role="Colors" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="Founds" Type="Self.Found" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Founds">
+              <PropertyRef Name="color1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Founds__color2__5EBF139D">
+          <End Role="Colors" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="Founds" Type="Self.Found" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Founds">
+              <PropertyRef Name="color2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Founds__color3__5DCAEF64">
+          <End Role="Colors" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="Founds" Type="Self.Found" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Founds">
+              <PropertyRef Name="color3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Losts__color1__5AEE82B9">
+          <End Role="Colors" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="Losts" Type="Self.Lost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Losts">
+              <PropertyRef Name="color1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Losts__color2__5BE2A6F2">
+          <End Role="Colors" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="Losts" Type="Self.Lost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Losts">
+              <PropertyRef Name="color2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Losts__color3__5CD6CB2B">
+          <End Role="Colors" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="Losts" Type="Self.Lost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="Losts">
+              <PropertyRef Name="color3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Founds__ItemId__4AB81AF0">
+          <End Role="Items" Type="Self.Item" Multiplicity="1" />
+          <End Role="Founds" Type="Self.Found" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="Founds">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Founds__Material__4BAC3F29">
+          <End Role="Materials" Type="Self.Material" Multiplicity="0..1" />
+          <End Role="Founds" Type="Self.Found" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MaterialId" />
+            </Principal>
+            <Dependent Role="Founds">
+              <PropertyRef Name="MaterialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Founds__UserId__4CA06362">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Founds" Type="Self.Found" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Founds">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Losts__ItemId__4F7CD00D">
+          <End Role="Items" Type="Self.Item" Multiplicity="1" />
+          <End Role="Losts" Type="Self.Lost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="Losts">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Losts__MaterialI__5070F446">
+          <End Role="Materials" Type="Self.Material" Multiplicity="0..1" />
+          <End Role="Losts" Type="Self.Lost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MaterialId" />
+            </Principal>
+            <Dependent Role="Losts">
+              <PropertyRef Name="MaterialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Losts__UserId__5165187F">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Losts" Type="Self.Lost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Losts">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ColorsFounds">
+          <End Role="Colors" Type="Self.Color" Multiplicity="*" />
+          <End Role="Founds" Type="Self.Found" Multiplicity="*" />
+        </Association>
+        <Association Name="ColorsLosts">
+          <End Role="Colors" Type="Self.Color" Multiplicity="*" />
+          <End Role="Losts" Type="Self.Lost" Multiplicity="*" />
+        </Association>
+        <Association Name="LostToFound">
+          <End Role="Founds" Type="Self.Found" Multiplicity="*" />
+          <End Role="Losts" Type="Self.Lost" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="HashavatAvedaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Colors" EntityType="Self.Color" />
+          <EntitySet Name="Founds" EntityType="Self.Found" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="Losts" EntityType="Self.Lost" />
+          <EntitySet Name="Materials" EntityType="Self.Material" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Founds__Category__49C3F6B7" Association="Self.FK__Founds__Category__49C3F6B7">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Items__CategoryI__4D94879B" Association="Self.FK__Items__CategoryI__4D94879B">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Losts__CategoryI__4E88ABD4" Association="Self.FK__Losts__CategoryI__4E88ABD4">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Founds__color1__5FB337D6" Association="Self.FK__Founds__color1__5FB337D6">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Founds__color2__5EBF139D" Association="Self.FK__Founds__color2__5EBF139D">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Founds__color3__5DCAEF64" Association="Self.FK__Founds__color3__5DCAEF64">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Losts__color1__5AEE82B9" Association="Self.FK__Losts__color1__5AEE82B9">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Losts__color2__5BE2A6F2" Association="Self.FK__Losts__color2__5BE2A6F2">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Losts__color3__5CD6CB2B" Association="Self.FK__Losts__color3__5CD6CB2B">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Founds__ItemId__4AB81AF0" Association="Self.FK__Founds__ItemId__4AB81AF0">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Founds__Material__4BAC3F29" Association="Self.FK__Founds__Material__4BAC3F29">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Founds__UserId__4CA06362" Association="Self.FK__Founds__UserId__4CA06362">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Losts__ItemId__4F7CD00D" Association="Self.FK__Losts__ItemId__4F7CD00D">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Losts__MaterialI__5070F446" Association="Self.FK__Losts__MaterialI__5070F446">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Losts__UserId__5165187F" Association="Self.FK__Losts__UserId__5165187F">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="ColorsFounds" Association="Self.ColorsFounds">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Founds" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="ColorsLosts" Association="Self.ColorsLosts">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="LostToFound" Association="Self.LostToFound">
+            <End Role="Founds" EntitySet="Founds" />
+            <End Role="Losts" EntitySet="Losts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HashavatAvedaModelStoreContainer" CdmEntityContainer="HashavatAvedaEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="HashavatAvedaModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="HashavatAvedaModel.Color">
+              <MappingFragment StoreEntitySet="Colors">
+                <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Founds">
+            <EntityTypeMapping TypeName="HashavatAvedaModel.Found">
+              <MappingFragment StoreEntitySet="Founds">
+                <ScalarProperty Name="FoundId" ColumnName="FoundId" />
+                <ScalarProperty Name="FoundName" ColumnName="FoundName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+                <ScalarProperty Name="FoundDescription" ColumnName="FoundDescription" />
+                <ScalarProperty Name="FoundDate" ColumnName="FoundDate" />
+                <ScalarProperty Name="FoundLat" ColumnName="FoundLat" />
+                <ScalarProperty Name="FoundLng" ColumnName="FoundLng" />
+                <ScalarProperty Name="FoundImage" ColumnName="FoundImage" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="color1" ColumnName="color1" />
+                <ScalarProperty Name="color2" ColumnName="color2" />
+                <ScalarProperty Name="color3" ColumnName="color3" />
+                <ScalarProperty Name="FoundAddress" ColumnName="FoundAddress" />
+                <ScalarProperty Name="FoundStatus" ColumnName="FoundStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="HashavatAvedaModel.Item">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Losts">
+            <EntityTypeMapping TypeName="HashavatAvedaModel.Lost">
+              <MappingFragment StoreEntitySet="Losts">
+                <ScalarProperty Name="LostId" ColumnName="LostId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+                <ScalarProperty Name="LostDescription" ColumnName="LostDescription" />
+                <ScalarProperty Name="LostDate" ColumnName="LostDate" />
+                <ScalarProperty Name="LostLat" ColumnName="LostLat" />
+                <ScalarProperty Name="LostLng" ColumnName="LostLng" />
+                <ScalarProperty Name="SearchRadius" ColumnName="SearchRadius" />
+                <ScalarProperty Name="LostImage" ColumnName="LostImage" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="color1" ColumnName="color1" />
+                <ScalarProperty Name="color2" ColumnName="color2" />
+                <ScalarProperty Name="color3" ColumnName="color3" />
+                <ScalarProperty Name="LostAddress" ColumnName="LostAddress" />
+                <ScalarProperty Name="LostStatus" ColumnName="LostStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="HashavatAvedaModel.Material">
+              <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+                <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="HashavatAvedaModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserMail" ColumnName="UserMail" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserMobile" ColumnName="UserMobile" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="UserImage" ColumnName="UserImage" />
+                <ScalarProperty Name="UserLat" ColumnName="UserLat" />
+                <ScalarProperty Name="UserLng" ColumnName="UserLng" />
+                <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ColorsFounds" TypeName="HashavatAvedaModel.ColorsFounds" StoreEntitySet="ColorsFounds">
+            <EndProperty Name="Colors">
+              <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+            </EndProperty>
+            <EndProperty Name="Founds">
+              <ScalarProperty Name="FoundId" ColumnName="FoundId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ColorsLosts" TypeName="HashavatAvedaModel.ColorsLosts" StoreEntitySet="ColorsLosts">
+            <EndProperty Name="Colors">
+              <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+            </EndProperty>
+            <EndProperty Name="Losts">
+              <ScalarProperty Name="LostId" ColumnName="LostId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="LostToFound" TypeName="HashavatAvedaModel.LostToFound" StoreEntitySet="LostToFound">
+            <EndProperty Name="Founds">
+              <ScalarProperty Name="FoundId" ColumnName="FoundId" />
+            </EndProperty>
+            <EndProperty Name="Losts">
+              <ScalarProperty Name="LostId" ColumnName="LostId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
